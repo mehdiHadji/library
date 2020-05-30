@@ -2,17 +2,25 @@ import requests
 import json
 import tqdm
 
+
 """
-	Pass emails here
-	emails : []
+	email : str
+	returns : {	'address': 'my_email@gmail.com',
+ 			   	'username': 'my_email',
+ 			   	'domain': 'gmail.com',
+ 				'md5Hash': '19b021ad275fae318696ab8027aec424',
+ 				'suggestion': '',
+ 				'validFormat': True,
+ 				'deliverable': False,
+ 				'fullInbox': False,
+ 				'hostExists': True,
+ 				'catchAll': False,
+ 				'gravatar': False,
+ 				'role': False,
+ 				'disposable': False,
+ 				'free': True}
 """
 
-results = []
-for email in tqdm(emails):
-    if email is not None:
-        response = requests.get("https://api.trumail.io/v2/lookups/json?email="+str(email))
-        try:
-            results.append({"valide_format" :json.loads(response.text)["validFormat"],
-                            "deliverable" : json.loads(response.text)["deliverable"]})
-        except:
-            results.append({"valide_format":False, "deliverable":False})
+def check_email(email):
+	response = requests.get("https://api.trumail.io/v2/lookups/json?email="+str(email))
+	return json.loads(response.text)
