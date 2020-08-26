@@ -22,3 +22,10 @@ Count of the distinct values:
 """
 
 df.select(F.countDistinct("colName")).show()
+
+
+"""
+Count occurences of each distinct value in a given column
+"""
+
+df.groupBy('colName').count().show()
