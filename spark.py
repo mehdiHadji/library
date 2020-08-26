@@ -15,3 +15,10 @@ Concatenate two columns in pyspark without space
 
 
 df = df.select("*", concat(col("first_name"),col("last_name")).alias("full_name"))
+
+
+"""
+Count of the distinct values: 
+"""
+
+df.select(F.countDistinct("colName")).show()
