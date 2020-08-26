@@ -29,3 +29,10 @@ Count occurences of each distinct value in a given column
 """
 
 df.groupBy('colName').count().show()
+
+
+"""
+Count occurences of each distinct value in a given column, ordered by descending
+"""
+
+df.groupBy('colName').count().orderBy('count', ascending=False).show()
