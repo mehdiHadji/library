@@ -36,3 +36,10 @@ Count occurences of each distinct value in a given column, ordered by descending
 """
 
 df.groupBy('colName').count().orderBy('count', ascending=False).show()
+
+
+"""
+Select data from dataframe with (current_date - a given number of days i.e 366)
+"""
+
+df = df.filter(df.date_col > date_sub(current_date(), 366))
